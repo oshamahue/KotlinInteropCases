@@ -1,4 +1,4 @@
-//@file:JvmName("KotlinToJavaUtil")
+@file:JvmName("KotlinToJavaUtil")
 
 package com.oshamahue.kotlindemo
 
@@ -53,8 +53,10 @@ class KotlinToJava {
 
 
     companion object {
+        @JvmStatic
         val companionString = "companion string"
 
+        @JvmStatic
         fun companionFunction(): String {
             return "companion function"
         }
@@ -71,7 +73,7 @@ class KotlinToJava {
 
 
     //region Exception throwing and checked exceptions
-    //@Throws(IOException::class)
+    @Throws(IOException::class)
     fun checkedExceptionsThrows() {
         throw IOException()
     }
@@ -102,7 +104,7 @@ class KotlinToJava {
         javaToKotlin.`is`()
     }
 
-   // @JvmName("isExtends")
+     @JvmName("isExtends")
     fun extends(): Boolean {
         return false
     }
@@ -113,7 +115,7 @@ class KotlinToJava {
     private fun javaVarargs() {
         javaToKotlin.javaVarargs(1, 2, 3, 3, 4, 5, 6)
 
-        val array = intArrayOf(1, 2, 3)
+        val array = intArrayOf(1, 2, 3,5)
         javaToKotlin.javaVarargs(*array)//spread operator
 
     }

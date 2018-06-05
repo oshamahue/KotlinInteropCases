@@ -1,5 +1,7 @@
 package com.oshamahue.kotlindemo;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import kotlin.Unit;
@@ -55,17 +57,17 @@ public class JavaToKotlin {
     }
 
 
-    public void setNullableString(String nullableString) {
+    public void setNullableString( String nullableString) {
         this.nullableString = nullableString;
     }
-
+@NotNull
     private String notNullableString = "bar";
-
+@NotNull
     public String getNotNullableString() {
         return notNullableString;
     }
 
-    public void setNotNullableString(String notNullableString) {
+    public void setNotNullableString(@NotNull String notNullableString) {
         this.notNullableString = notNullableString;
     }
 
@@ -75,23 +77,23 @@ public class JavaToKotlin {
 
     //region calling extension functions
     private void callExtensionFunction() {
-        KotlinToJavaKt.getThridLetter("foo");
+        KotlinToJavaUtil.getThridLetter("foo");
     }
     //endregion
 
 
     //region Static access and companion object
     private void staticAccess() {
-        String companionVarString = KotlinToJava.Companion.getCompanionString();
-        String companionFunString = KotlinToJava.Companion.companionFunction();
+        String companionVarString = KotlinToJava.getCompanionString();
+        String companionFunString = KotlinToJava.companionFunction();
     }
     //endregion
 
 
     //region accessing package level functions
     private void accessingPackageLevelMembers() {
-        String string = KotlinToJavaKt.packageLevelFunction();
-        string = KotlinToJavaKt.packageLevelConstant;
+        String string = KotlinToJavaUtil.packageLevelFunction();
+        string = KotlinToJavaUtil.packageLevelConstant;
 
     }
     //endregion
@@ -99,7 +101,11 @@ public class JavaToKotlin {
 
     //region Exception throwing and checked exceptions
     private void checkedExceptionsCalls() {
+        try {
             kotlinToJava.checkedExceptionsThrows();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -128,8 +134,8 @@ public class JavaToKotlin {
         return true;
     }
 
-    private void callExtends(){
-        //kotlinToJava.extends()
+    private void callExtends() {
+        kotlinToJava.isExtends();
     }
 
 
